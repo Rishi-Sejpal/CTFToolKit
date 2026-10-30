@@ -11,6 +11,7 @@ import ExifTool from './components/ExifTool'
 import ZeroWidthTool from './components/ZeroWidthTool'
 import LsbTool from './components/LsbTool'
 import WorkspaceTool from './components/WorkspaceTool'
+import TextUtilsTool from './components/TextUtilsTool'
 import { Base58Tool, Base85Tool, MorseTool, VigenereTool, AesTool, EntropyTool, SubnetTool } from './components/ExtraTools'
 import UrlParserTool from './components/UrlParserTool'
 import CheatSheetsTool from './components/CheatSheetsTool'
@@ -68,6 +69,7 @@ export const TOOLS: ToolDefinition[] = [
   mk('zerowidth', 'Zero-Width Detector', 'Steganography', 'Detect hidden unicode', ['stego', 'unicode', 'hidden'], ZeroWidthTool),
   mk('lsb', 'LSB Inspector', 'Steganography', 'Visualise LSB plane', ['stego', 'lsb', 'image'], LsbTool),
   mk('workspace', 'Challenge Workspace', 'Utilities', 'Save notes and findings', ['workspace', 'challenge', 'notes'], WorkspaceTool),
+  mk('textutils', 'Text Utils', 'Text', 'Text stats and transforms', ['text', 'utils', 'count'], TextUtilsTool),
   mk('base58', 'Base58', 'Encoding', 'Base58 encode/decode', ['base58'], Base58Tool),
   mk('base85', 'Base85', 'Encoding', 'Base85 encode/decode', ['base85','ascii85'], Base85Tool),
   mk('morse', 'Morse Code', 'Encoding', 'Morse encode/decode', ['morse'], MorseTool),

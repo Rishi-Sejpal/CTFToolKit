@@ -12,6 +12,7 @@ export default function HexEditorTool() {
   const [view, setView] = useState<'both' | 'hex' | 'ascii'>('both')
   const [offsetInput, setOffsetInput] = useState('')
   const [selected, setSelected] = useState<number | null>(null)
+  const [stringsOut, setStringsOut] = useState('')
   const containerRef = useRef<HTMLDivElement>(null)
 
   const loadFile = async (f: File) => {
@@ -110,6 +111,13 @@ export default function HexEditorTool() {
           <button className="btn" onClick={gotoOffset} disabled={!bytes}>Go</button>
           <button className="btn" onClick={copyHex} disabled={!bytes}>Copy Hex</button>
           <button className="btn" onClick={exportDump} disabled={!bytes}>Export</button>
+          <button className="btn" onClick={() => {
+            if (!bytes) return
+            const re = /[\x20-\x7e]{4,}/g
+            const text = new TextDecoder('latin1').decode(bytes)
+            const m = text.match(re) || []
+            setStringsOut(m.join('\n'))
+          }} disabled={!bytes}>Strings</button>
         </div>
         <div style={{ marginBottom: 12 }}>
           <select className="input" style={{ width: 160 }} value={view} onChange={(e) => setView(e.target.value as any)}>
@@ -171,6 +179,13 @@ export default function HexEditorTool() {
           </div>
         )}
 
+        {stringsOut && (
+          <div style={{ marginTop: 12 }}>
+            <label className="muted">Extracted strings</label>
+            <textarea value={stringsOut} readOnly style={{ minHeight: 120 }} />
+            <button className="btn" onClick={() => navigator.clipboard.writeText(stringsOut)}>Copy strings</button>
+          </div>
+        )}
         <div style={{ marginTop: 12, padding: '8px 12px', borderRadius: 8, border: '1px solid rgba(245,158,11,.18)', background: '#111111', fontSize: 13, color: '#a3a3a3' }}>
           Tip: Each pair of hexadecimal characters represents one byte. Click a byte to highlight its ASCII counterpart.
         </div>
