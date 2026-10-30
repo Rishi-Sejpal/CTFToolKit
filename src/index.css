@@ -85,3 +85,6 @@ textarea { min-height: 120px; resize: vertical; font-family: ui-monospace, SFMon
 
 .hex-editor textarea { border-color: #2dd4bf; }
 .hex-editor .card { border-color: #2dd4bf; }
+
+.item { cursor: pointer; }
+.item:hover { background: var(--panel-2); border-radius: 4px; }
