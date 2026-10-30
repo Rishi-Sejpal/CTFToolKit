@@ -20,7 +20,10 @@ export default function HomePage({ onEnter }: { onEnter?: () => void }) {
       <div style={{ maxWidth: 960, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
           <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 999, border: '1px solid rgba(245,158,11,.3)', color: '#fbbf24', fontSize: 11, letterSpacing: '.18em' }}>BROWSER-BASED · NO BACKEND</span>
-          <h1 style={{ fontSize: 44, margin: '12px 0 6px', fontWeight: 800, letterSpacing: '-.01em' }}>CTF<span style={{ color: '#f59e0b' }}>Tool</span>Kit</h1>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 8 }}>
+            <svg width="40" height="40" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#050505" stroke="#f59e0b" stroke-width="2"/><text x="32" y="42" font-family="ui-sans-serif,system-ui" font-weight="900" font-size="26" text-anchor="middle" fill="#f59e0b">CT</text></svg>
+            <h1 style={{ fontSize: 44, margin: 0, fontWeight: 800, letterSpacing: '-.01em' }}>CTF<span style={{ color: '#f59e0b' }}>Tool</span>Kit</h1>
+          </div>
           <p style={{ color: '#a3a3a3', fontSize: 16, maxWidth: 560, margin: '0 auto 16px', lineHeight: 1.5 }}>Your browser-based CTF workstation. Encode, inspect, transform and explore — privately, locally, without a backend.</p>
           <img src="/images/ctftoolkit-brand-art.svg" alt="CTFToolKit brand artwork" loading="eager" style={{ width: '100%', maxWidth: 520, margin: '12px auto 0', display: 'block', borderRadius: 12 }} />
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
