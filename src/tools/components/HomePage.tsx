@@ -18,9 +18,8 @@ export default function HomePage({ onEnter }: { onEnter?: () => void }) {
         .hp-feature:focus { outline: 2px solid #f59e0b; outline-offset: 2px; }
       `}</style>
       <div style={{ maxWidth: 960, margin: '0 auto' }}>
-        <div style={{ textAlign: 'left', marginBottom: 28, paddingLeft: 4 }}>
-          <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 999, border: '1px solid rgba(245,158,11,.3)', color: '#fbbf24', fontSize: 11, letterSpacing: '.18em' }}>BROWSER-BASED · NO BACKEND</span>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: 12, marginBottom: 8 }}>
+        <div style={{ textAlign: 'center', marginBottom: 28 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 8 }}>
             <svg width="44" height="44" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#lg)"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#ea580c"/></linearGradient></defs><text x="32" y="43" font-family="ui-sans-serif,system-ui" font-weight="900" font-size="28" text-anchor="middle" fill="#0a0a0a">CT</text></svg>
             <h1 style={{ fontSize: 44, margin: 0, fontWeight: 800, letterSpacing: '-.01em' }}>CTF<span style={{ color: '#f59e0b' }}>Tool</span>Kit</h1>
           </div>
