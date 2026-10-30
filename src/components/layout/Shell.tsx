@@ -74,7 +74,7 @@ export function Shell({ tools, activeId, onSelect, children, offlineReady }: Pro
   const activeTool = tools.find((t) => t.id === activeId)
 
   return (
-    <div className="app">
+    <div className="app" style={{ gridTemplateColumns: collapsed ? "60px 1fr" : "260px 1fr" }}>
       <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'open' : ''}`}>
         <div className="topbar" style={{ border: 'none' }}>
           <button className="btn" onClick={() => setCollapsed((c) => !c)} aria-label="Toggle sidebar">
