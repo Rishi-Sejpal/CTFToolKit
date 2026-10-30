@@ -137,6 +137,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
             ☰
           </button>
           <div style={{ flex: 1, fontWeight: 600 }}>{activeTool?.name ?? 'CTFToolKit'}</div>
+          <button className="btn" onClick={() => window.dispatchEvent(new CustomEvent('ctftoolkit:nav', { detail: 'cheatsheets' }))}>Sheets</button>
           <button className="btn" onClick={() => setSettingsOpen(true)} aria-label="Settings">⚙</button>
           <button className="btn" onClick={() => setPaletteOpen(true)}>
             ⌘K

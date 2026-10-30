@@ -27,6 +27,7 @@ const mk = (id: string, name: string, category: ToolCategory, description: strin
 })
 
 export const TOOLS: ToolDefinition[] = [
+  mk('cheatsheets', 'Cheat Sheets', 'Cheat Sheets', 'Quick references', ['cheat', 'reference', 'curl', 'nmap'], CheatSheetsTool),
   mk('hexeditor', 'Hex Editor', 'Utilities', 'Hex editor', ['hex', 'editor', 'file'], HexEditorTool),
   mk('b64-enc', 'Base64 Encode', 'Encoding', 'Encode text to Base64', ['base64', 'encode'], () => <W mode="b64e" title="Base64 Encode" desc="Encode text to Base64" />),
   mk('b64-dec', 'Base64 Decode', 'Encoding', 'Decode Base64 to text', ['base64', 'decode'], () => <W mode="b64d" title="Base64 Decode" desc="Decode Base64" />),
@@ -62,7 +63,6 @@ export const TOOLS: ToolDefinition[] = [
   mk('rsg', 'Reverse Shell Generator', 'Reverse Shell', 'Generate reverse shells', ['reverse', 'shell', 'rsg'], ReverseShellTool),
   mk('recipe', 'Recipe Workbench', 'Recipe', 'Chain transformations', ['recipe', 'workbench', 'chain'], RecipeWorkbench),
   mk('catalog', 'Native Tool Catalog', 'Utilities', 'Browse native tools', ['catalog', 'tools', 'kali'], CatalogTool),
-  mk('cheatsheets', 'Cheat Sheets', 'Cheat Sheets', 'Quick references', ['cheat', 'reference', 'curl', 'nmap'], CheatSheetsTool),
   mk('strings', 'Strings Extractor', 'Forensics', 'Extract printable strings', ['strings', 'binary'], StringsTool),
   mk('filesig', 'File Signature', 'Forensics', 'Identify file by magic bytes', ['file', 'magic', 'signature'], FileSigTool),
   mk('exif', 'EXIF Viewer', 'Forensics', 'Inspect image metadata', ['exif', 'metadata', 'image'], ExifTool),
