@@ -85,7 +85,6 @@ export default function HexEditorTool() {
           onDrop={onDrop}
           style={{ border: `2px dashed ${dragOver ? '#f59e0b' : 'rgba(245,158,11,.35)'}`, borderRadius: 12, padding: 24, textAlign: 'center', background: dragOver ? 'rgba(245,158,11,.08)' : '#111111', marginBottom: 12 }}
         >
-          <div style={{ fontSize: 28, color: '#f59e0b', marginBottom: 6 }}>☁</div>
           <div style={{ fontWeight: 600, marginBottom: 4 }}>Drop a file here or Browse files</div>
           <div className="muted" style={{ marginBottom: 10 }}>Files are read locally in your browser.</div>
           <label className="btn primary" style={{ cursor: 'pointer' }}>
