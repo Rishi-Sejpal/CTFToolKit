@@ -2,21 +2,26 @@ import { useState, useEffect } from "react"
 import { IO, ToolCard } from '../../components/ui/ToolCard'
 import * as E from '../impl/encoding'
 import * as C from '../impl/compression'
+import { readSettings } from '../../lib/settings'
 
 type Mode = 'b64e' | 'b64d' | 'b32e' | 'b32d' | 'hexe' | 'hexd' | 'bine' | 'bind' | 'urle' | 'urld' | 'htmle' | 'htmld' | 'rot' | 'caesar' | 'xor' | 'xord' | 'json' | 'jsonmin' | 'uni' | 'ascii' | 'ts2date' | 'date2ts' | 'regex' | 'diff' | 'comp' | 'decomp'
 
 export function SharedEncoding({ mode, title, desc }: { mode: Mode; title: string; desc: string }) {
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
-  const [live, setLive] = useState(true)
-  const [perLine, setPerLine] = useState(false)
+  const [settings, setSettings] = useState(() => readSettings())
   const [key, setKey] = useState('key')
   const [shift, setShift] = useState(3)
   const [pattern, setPattern] = useState('')
   const [flags, setFlags] = useState('g')
   const [other, setOther] = useState('')
   const copy = async () => { try { await navigator.clipboard.writeText(output) } catch {} }
-  useEffect(() => { if (live) run() }, [input, live, perLine, key, shift, pattern, flags, other])
+  useEffect(() => {
+    const h = (e: Event) => setSettings((e as CustomEvent).detail)
+    window.addEventListener('ctftoolkit:settings', h)
+    return () => window.removeEventListener('ctftoolkit:settings', h)
+  }, [])
+  useEffect(() => { if (settings.live) run() }, [input, settings.live, settings.perLine, key, shift, pattern, flags, other])
 
   const transformOne = async (v: string): Promise<string> => {
     let r = ''
@@ -60,7 +65,7 @@ export function SharedEncoding({ mode, title, desc }: { mode: Mode; title: strin
     }
   }
   const run = async () => {
-    if (perLine) {
+    if (settings.perLine) {
       const lines = input.split('\n')
       const res = await Promise.all(lines.map((l) => transformOne(l)))
       setOutput(res.join('\n'))
@@ -95,10 +100,6 @@ export function SharedEncoding({ mode, title, desc }: { mode: Mode; title: strin
           <textarea value={other} onChange={(e) => setOther(e.target.value)} />
         </>
       )}
-      <div className="row">
-        <label><input type="checkbox" checked={live} onChange={(e) => setLive(e.target.checked)} /> Live</label>
-        <label><input type="checkbox" checked={perLine} onChange={(e) => setPerLine(e.target.checked)} /> Per line</label>
-      </div>
       <IO input={input} setInput={setInput} output={output} onRun={run} onCopy={copy} onReset={() => { setInput(''); setOutput('') }} />
     </ToolCard>
   )

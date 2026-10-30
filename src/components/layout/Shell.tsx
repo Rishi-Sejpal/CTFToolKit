@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import type { ToolDefinition } from '../../lib/types'
 import { readJson, writeJson, STORAGE_KEYS } from '../../lib/storage'
+import { readSettings, writeSettings } from '../../lib/settings'
 
 interface Props {
   tools: ToolDefinition[]
@@ -18,6 +19,8 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
   const [favorites, setFavorites] = useState<string[]>(() => readJson(STORAGE_KEYS.favorites, []))
   const [recent, setRecent] = useState<string[]>(() => readJson(STORAGE_KEYS.recent, []))
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({ Favorites: true, Recent: true })
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [settings, setSettings] = useState(readSettings)
 
   useEffect(() => writeJson(STORAGE_KEYS.favorites, favorites), [favorites])
   useEffect(() => writeJson(STORAGE_KEYS.recent, recent), [recent])
@@ -134,6 +137,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
             ☰
           </button>
           <div style={{ flex: 1, fontWeight: 600 }}>{activeTool?.name ?? 'CTFToolKit'}</div>
+          <button className="btn" onClick={() => setSettingsOpen(true)} aria-label="Settings">⚙</button>
           <button className="btn" onClick={() => setPaletteOpen(true)}>
             ⌘K
           </button>
@@ -158,6 +162,18 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
           })}
         </div>
       </aside>
+      {settingsOpen && (
+        <div className="cmdpalette" onClick={() => setSettingsOpen(false)}>
+          <div className="box" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 420 }}>
+            <div style={{ padding: 12, borderBottom: '1px solid var(--border)', fontWeight: 600 }}>Settings</div>
+            <div style={{ padding: 12 }}>
+              <label style={{ display: 'block', marginBottom: 8 }}><input type="checkbox" checked={settings.live} onChange={(e) => { const ns = { ...settings, live: e.target.checked }; setSettings(ns); writeSettings(ns) }} /> Live encoding/decoding</label>
+              <label style={{ display: 'block' }}><input type="checkbox" checked={settings.perLine} onChange={(e) => { const ns = { ...settings, perLine: e.target.checked }; setSettings(ns); writeSettings(ns) }} /> Process per line</label>
+            </div>
+          </div>
+        </div>
+      )}
+
       {paletteOpen && (
         <CommandPalette
           tools={tools}
