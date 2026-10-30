@@ -167,8 +167,18 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
           <div className="box" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 420 }}>
             <div style={{ padding: 12, borderBottom: '1px solid var(--border)', fontWeight: 600 }}>Settings</div>
             <div style={{ padding: 12 }}>
-              <label style={{ display: 'block', marginBottom: 8 }}><input type="checkbox" checked={settings.live} onChange={(e) => { const ns = { ...settings, live: e.target.checked }; setSettings(ns); writeSettings(ns) }} /> Live encoding/decoding</label>
-              <label style={{ display: 'block' }}><input type="checkbox" checked={settings.perLine} onChange={(e) => { const ns = { ...settings, perLine: e.target.checked }; setSettings(ns); writeSettings(ns) }} /> Process per line</label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                <span>Live encoding/decoding</span>
+                <button onClick={() => { const ns = { ...settings, live: !settings.live }; setSettings(ns); writeSettings(ns) }} style={{ width: 42, height: 22, borderRadius: 11, border: 'none', background: settings.live ? '#f59e0b' : '#333', position: 'relative', cursor: 'pointer' }}>
+                  <span style={{ position: 'absolute', top: 2, left: settings.live ? 22 : 2, width: 18, height: 18, borderRadius: '50%', background: '#fff', transition: 'left .2s' }} />
+                </button>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span>Process per line</span>
+                <button onClick={() => { const ns = { ...settings, perLine: !settings.perLine }; setSettings(ns); writeSettings(ns) }} style={{ width: 42, height: 22, borderRadius: 11, border: 'none', background: settings.perLine ? '#f59e0b' : '#333', position: 'relative', cursor: 'pointer' }}>
+                  <span style={{ position: 'absolute', top: 2, left: settings.perLine ? 22 : 2, width: 18, height: 18, borderRadius: '50%', background: '#fff', transition: 'left .2s' }} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
