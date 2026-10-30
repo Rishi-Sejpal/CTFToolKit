@@ -150,7 +150,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
         })}
         <div style={{ flex: 1, minHeight: 60 }} />
         <div style={{ borderTop: '1px solid var(--border)', paddingTop: 12, marginTop: 12 }}>
-          <div style={{ marginBottom: 4, color: '#a3a3a3', fontWeight: 700, fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase' }}>Recent</div>
+          <div style={{ marginBottom: 4, color: '#f59e0b', fontWeight: 700, fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase' }}>Recent</div>
           {recent.map((id) => {
             const t = tools.find((x) => x.id === id)
             if (!t) return null
