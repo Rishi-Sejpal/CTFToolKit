@@ -201,6 +201,7 @@ extract_rockyou() {
 }
 
 main() {
+  case "$PROFILE" in essentials|full|custom) ;; *) log "Unknown profile: $PROFILE"; exit 2;; esac
   detect_distro
   if [[ "$DISTRO" == "unknown" ]]; then log "Unsupported distro"; exit 1; fi
   log "Profile: $PROFILE"
