@@ -89,7 +89,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
         </div>
         {!collapsed && (
           <>
-            <div style={{ padding: '8px 12px' }}>
+            <div style={{ padding: '8px 12px', display: 'flex', gap: 6 }}>
               <input
                 id="global-search"
                 className="input"
@@ -97,6 +97,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+              <button className="btn" onClick={() => setPaletteOpen(true)} aria-label="Command palette">⌘K</button>
             </div>
             <div style={{ overflow: 'auto', flex: 1 }}>
               {grouped.map(([cat, items]) => (
@@ -144,9 +145,6 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
             else { setPrevTool(activeId); onSelect('cheatsheets') }
           }}>{activeId === 'cheatsheets' ? 'Close CheatSheets' : 'CheatSheets'}</button>
           <button className="btn" onClick={() => setSettingsOpen(true)} aria-label="Settings">⚙</button>
-          <button className="btn" onClick={() => setPaletteOpen(true)}>
-            ⌘K
-          </button>
         </div>
         <div className="content">{children}</div>
       </div>
