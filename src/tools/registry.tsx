@@ -5,6 +5,7 @@ import { HashTool, HmacTool, HashIdTool, FileHashTool, JwtTool } from './compone
 import ReverseShellTool from './components/ReverseShellTool'
 import RecipeWorkbench from './components/RecipeWorkbench'
 import CatalogTool from './components/CatalogTool'
+import CheatSheetsTool from './components/CheatSheetsTool'
 
 function W(props: { mode: any; title: string; desc: string }) {
   return <SharedEncoding mode={props.mode} title={props.title} desc={props.desc} />
@@ -50,4 +51,5 @@ export const TOOLS: ToolDefinition[] = [
   mk('rsg', 'Reverse Shell Generator', 'Reverse Shell', 'Generate reverse shells', ['reverse', 'shell', 'rsg'], ReverseShellTool),
   mk('recipe', 'Recipe Workbench', 'Recipe', 'Chain transformations', ['recipe', 'workbench', 'chain'], RecipeWorkbench),
   mk('catalog', 'Native Tool Catalog', 'Utilities', 'Browse native tools', ['catalog', 'tools', 'kali'], CatalogTool),
+  mk('cheatsheets', 'Cheat Sheets', 'Cheat Sheets', 'Quick references', ['cheat', 'reference', 'curl', 'nmap'], CheatSheetsTool),
 ]

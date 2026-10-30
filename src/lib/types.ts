@@ -6,6 +6,7 @@ export type ToolCategory =
   | 'Forensics'
   | 'Reverse Engineering'
   | 'Utilities'
+  | 'Cheat Sheets'
   | 'Recipe'
   | 'Reverse Shell'
 
