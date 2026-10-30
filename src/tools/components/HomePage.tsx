@@ -19,10 +19,8 @@ export default function HomePage({ onEnter }: { onEnter?: () => void }) {
       `}</style>
       <div style={{ maxWidth: 960, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 8 }}>
-            <svg width="44" height="44" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#lg)"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#ea580c"/></linearGradient></defs><text x="32" y="43" font-family="ui-sans-serif,system-ui" font-weight="900" font-size="28" text-anchor="middle" fill="#0a0a0a">CT</text></svg>
-            <h1 style={{ fontSize: 44, margin: 0, fontWeight: 800, letterSpacing: '-.01em' }}>CTF<span style={{ color: '#f59e0b' }}>Tool</span>Kit</h1>
-          </div>
+          <img src="/logo.svg" alt="CTFToolKit" style={{ width: '100%', maxWidth: 420, margin: '0 auto 8px', display: 'block' }} />
+          <h1 style={{ fontSize: 44, margin: 0, fontWeight: 800, letterSpacing: '-.01em', textAlign: 'center' }}>CTF<span style={{ color: '#f59e0b' }}>Tool</span>Kit</h1>
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
             <button onClick={enter} style={{ padding: '10px 22px', borderRadius: 10, border: 'none', background: '#f59e0b', color: '#0a0a0a', fontWeight: 700, cursor: 'pointer' }}>Open Toolkit</button>
             <button onClick={openPalette} style={{ padding: '10px 22px', borderRadius: 10, border: '1px solid rgba(245,158,11,.35)', background: 'transparent', color: '#fbbf24', fontWeight: 600, cursor: 'pointer' }}>Search Tools (Ctrl+K)</button>
