@@ -28,7 +28,7 @@ export function IO({ input, setInput, output, onRun, onCopy, onReset, runLabel =
   return (
     <>
       <label className="muted">Input</label>
-      <textarea value={input} onChange={(e) => setInput(e.target.value)} />
+      <textarea value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if ((e.ctrlKey||e.metaKey) && e.key === 'Enter') { e.preventDefault(); onRun() } }} />
       <div className="row">
         <button className="btn primary" onClick={onRun}>{runLabel}</button>
         <button className="btn" onClick={onCopy}>Copy output</button>
