@@ -1,5 +1,8 @@
 # CTFToolKit
 
+![CTFToolKit brand artwork](public/images/ctftoolkit-brand-art.svg)
+
+
 Offline-first CTF web toolkit. Vite + React + TypeScript. Static PWA deployed to Vercel.
 
 ## Development

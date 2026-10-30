@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <radialGradient id="g1" cx="30%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="75%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#ea580c" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="600" fill="#050505"/>
+  <rect width="1200" height="600" fill="url(#g1)"/>
+  <rect width="1200" height="600" fill="url(#g2)"/>
+  <g font-family="monospace" font-size="14" fill="#f59e0b" opacity="0.18">
+    <text x="40" y="60">48 65 6c 6c 6f</text>
+    <text x="80" y="120">01001000 01100101</text>
+    <text x="60" y="180">4a 57 54 2e 69 6e 73 70 65 63 74</text>
+    <text x="900" y="80">ff d8 ff e0 00 10 4a 46</text>
+    <text x="920" y="140">50 4b 03 04 14 00 00 00</text>
+    <text x="880" y="200">7f 45 4c 46 02 01 01 00</text>
+    <text x="100" y="500">SELECT * FROM flags;</text>
+    <text x="820" y="520">nmap -sC -sV target</text>
+    <text x="400" y="560">hashcat -m 0 hashes.txt rockyou.txt</text>
+  </g>
+  <g stroke="#f59e0b" stroke-width="1" opacity="0.25" fill="none">
+    <rect x="360" y="180" width="480" height="240" rx="16"/>
+    <line x1="360" y1="240" x2="840" y2="240"/>
+    <line x1="360" y1="300" x2="840" y2="300"/>
+    <line x1="360" y1="360" x2="840" y2="360"/>
+    <line x1="520" y1="180" x2="520" y2="420"/>
+    <line x1="680" y1="180" x2="680" y2="420"/>
+  </g>
+  <g font-family="ui-sans-serif, system-ui" font-weight="800" text-anchor="middle">
+    <text x="600" y="310" font-size="56" fill="#f5f5f5">CTF</text>
+    <text x="600" y="360" font-size="56" fill="#f59e0b">ToolKit</text>
+  </g>
+  <g font-family="ui-sans-serif, system-ui" font-size="16" fill="#a3a3a3" text-anchor="middle">
+    <text x="600" y="400">Browser-based CTF workstation</text>
+  </g>
+</svg>
