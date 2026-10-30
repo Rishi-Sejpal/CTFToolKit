@@ -11,6 +11,7 @@ import ExifTool from './components/ExifTool'
 import ZeroWidthTool from './components/ZeroWidthTool'
 import LsbTool from './components/LsbTool'
 import WorkspaceTool from './components/WorkspaceTool'
+import HashCrackTool from './components/HashCrackTool'
 import TextUtilsTool from './components/TextUtilsTool'
 import { Base58Tool, Base85Tool, MorseTool, VigenereTool, AesTool, EntropyTool, SubnetTool } from './components/ExtraTools'
 import UrlParserTool from './components/UrlParserTool'
@@ -44,6 +45,9 @@ export const TOOLS: ToolDefinition[] = [
   mk('rot13', 'ROT13', 'Encoding', 'ROT13 cipher', ['rot13', 'caesar'], () => <W mode="rot" title="ROT13" desc="ROT13" />),
   mk('rot11', 'ROT11', 'Encoding', 'ROT11 cipher', ['rot11'], () => <W mode="rot11" title="ROT11" desc="ROT11" />),
   mk('rot47', 'ROT47', 'Encoding', 'ROT47 cipher', ['rot47'], () => <W mode="rot47" title="ROT47" desc="ROT47" />),
+  mk('atbash', 'Atbash', 'Encoding', 'Atbash cipher', ['atbash'], () => <W mode="atbash" title="Atbash" desc="Atbash" />),
+  mk('railfence', 'Rail Fence', 'Encoding', 'Rail fence cipher', ['railfence'], () => <W mode="railfence" title="Rail Fence" desc="Rail fence (3 rails)" />),
+  mk('affine', 'Affine Cipher', 'Encoding', 'Affine cipher', ['affine'], () => <W mode="affine" title="Affine" desc="Affine (a=5,b=8)" />),
   mk('caesar', 'Caesar Cipher', 'Encoding', 'Caesar shift', ['caesar', 'shift'], () => <W mode="caesar" title="Caesar Cipher" desc="Shift letters" />),
   mk('xor-enc', 'XOR Encode', 'Encoding', 'XOR to hex', ['xor'], () => <W mode="xor" title="XOR Encode" desc="XOR text with key, output hex" />),
   mk('xor-dec', 'XOR Decode', 'Encoding', 'XOR from hex', ['xor'], () => <W mode="xord" title="XOR Decode" desc="XOR hex with key" />),
@@ -71,6 +75,7 @@ export const TOOLS: ToolDefinition[] = [
   mk('zerowidth', 'Zero-Width Detector', 'Steganography', 'Detect hidden unicode', ['stego', 'unicode', 'hidden'], ZeroWidthTool),
   mk('lsb', 'LSB Inspector', 'Steganography', 'Visualise LSB plane', ['stego', 'lsb', 'image'], LsbTool),
   mk('workspace', 'Challenge Workspace', 'Utilities', 'Save notes and findings', ['workspace', 'challenge', 'notes'], WorkspaceTool),
+  mk('hashcrack', 'Hash Crack Station', 'Cryptography', 'Dictionary hash cracking', ['hash', 'crack', 'password'], HashCrackTool),
   mk('textutils', 'Text Utils', 'Text', 'Text stats and transforms', ['text', 'utils', 'count'], TextUtilsTool),
   mk('base58', 'Base58', 'Encoding', 'Base58 encode/decode', ['base58'], Base58Tool),
   mk('base85', 'Base85', 'Encoding', 'Base85 encode/decode', ['base85','ascii85'], Base85Tool),

@@ -4,7 +4,7 @@ import * as E from '../impl/encoding'
 import * as C from '../impl/compression'
 import { readSettings } from '../../lib/settings'
 
-type Mode = 'b64e' | 'b64d' | 'b32e' | 'b32d' | 'hexe' | 'hexd' | 'bine' | 'bind' | 'urle' | 'urld' | 'htmle' | 'htmld' | 'rot' | 'rot11' | 'rot47' | 'caesar' | 'xor' | 'xord' | 'json' | 'jsonmin' | 'uni' | 'ascii' | 'ts2date' | 'date2ts' | 'regex' | 'diff' | 'comp' | 'decomp'
+type Mode = 'b64e' | 'b64d' | 'b32e' | 'b32d' | 'hexe' | 'hexd' | 'bine' | 'bind' | 'urle' | 'urld' | 'htmle' | 'htmld' | 'rot' | 'rot11' | 'rot47' | 'atbash' | 'railfence' | 'affine' | 'caesar' | 'xor' | 'xord' | 'json' | 'jsonmin' | 'uni' | 'ascii' | 'ts2date' | 'date2ts' | 'regex' | 'diff' | 'comp' | 'decomp'
 
 export function SharedEncoding({ mode, title, desc }: { mode: Mode; title: string; desc: string }) {
   const [input, setInput] = useState('')

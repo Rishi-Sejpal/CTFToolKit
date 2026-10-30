@@ -185,3 +185,23 @@ export function vigenere(s: string, key: string, dec=false): string {
 export function rot47(s: string): string {
   return s.replace(/[!-~]/g, (c) => String.fromCharCode(33 + ((c.charCodeAt(0) + 14) % 94)))
 }
+
+
+export function atbash(s: string): string {
+  return s.replace(/[a-zA-Z]/g, (c) => {
+    const base = c <= 'Z' ? 65 : 97
+    return String.fromCharCode(base + 25 - (c.charCodeAt(0) - base))
+  })
+}
+export function railFence(s: string, rails: number): string {
+  const fence: string[] = Array.from({ length: rails }, () => '')
+  let rail = 0, dir = 1
+  for (const c of s) { fence[rail] += c; rail += dir; if (rail === 0 || rail === rails - 1) dir = -dir }
+  return fence.join('')
+}
+export function affine(s: string, a: number, b: number): string {
+  return s.replace(/[a-zA-Z]/g, (c) => {
+    const base = c <= 'Z' ? 65 : 97
+    return String.fromCharCode(((a * (c.charCodeAt(0) - base) + b) % 26) + base)
+  })
+}
