@@ -181,3 +181,7 @@ export function vigenere(s: string, key: string, dec=false): string {
     return String.fromCharCode(((c.charCodeAt(0)-base+shift+26)%26)+base)
   })
 }
+
+export function rot47(s: string): string {
+  return s.replace(/[!-~]/g, (c) => String.fromCharCode(33 + ((c.charCodeAt(0) + 14) % 94)))
+}

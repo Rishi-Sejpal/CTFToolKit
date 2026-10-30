@@ -42,6 +42,8 @@ export const TOOLS: ToolDefinition[] = [
   mk('html-enc', 'HTML Entity Encode', 'Encoding', 'HTML entities encode', ['html'], () => <W mode="htmle" title="HTML Encode" desc="Encode HTML entities" />),
   mk('html-dec', 'HTML Entity Decode', 'Encoding', 'HTML entities decode', ['html'], () => <W mode="htmld" title="HTML Decode" desc="Decode HTML entities" />),
   mk('rot13', 'ROT13', 'Encoding', 'ROT13 cipher', ['rot13', 'caesar'], () => <W mode="rot" title="ROT13" desc="ROT13" />),
+  mk('rot11', 'ROT11', 'Encoding', 'ROT11 cipher', ['rot11'], () => <W mode="rot11" title="ROT11" desc="ROT11" />),
+  mk('rot47', 'ROT47', 'Encoding', 'ROT47 cipher', ['rot47'], () => <W mode="rot47" title="ROT47" desc="ROT47" />),
   mk('caesar', 'Caesar Cipher', 'Encoding', 'Caesar shift', ['caesar', 'shift'], () => <W mode="caesar" title="Caesar Cipher" desc="Shift letters" />),
   mk('xor-enc', 'XOR Encode', 'Encoding', 'XOR to hex', ['xor'], () => <W mode="xor" title="XOR Encode" desc="XOR text with key, output hex" />),
   mk('xor-dec', 'XOR Decode', 'Encoding', 'XOR from hex', ['xor'], () => <W mode="xord" title="XOR Decode" desc="XOR hex with key" />),
