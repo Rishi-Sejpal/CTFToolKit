@@ -174,10 +174,16 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
                 </button>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span>Process per line</span>
-                <button onClick={() => { const ns = { ...settings, perLine: !settings.perLine }; setSettings(ns); writeSettings(ns) }} style={{ width: 42, height: 22, borderRadius: 11, border: 'none', background: settings.perLine ? '#f59e0b' : '#333', position: 'relative', cursor: 'pointer' }}>
-                  <span style={{ position: 'absolute', top: 2, left: settings.perLine ? 22 : 2, width: 18, height: 18, borderRadius: '50%', background: '#fff', transition: 'left .2s' }} />
-                </button>
+                <span>Delimiter</span>
+                <select className="input" style={{ width: 140 }} value={settings.delimiter} onChange={(e) => { const ns = { ...settings, delimiter: e.target.value }; setSettings(ns); writeSettings(ns) }}>
+                  <option value="auto">Auto (newline)</option>
+                  <option value="newline">Newline</option>
+                  <option value="comma">Comma</option>
+                  <option value="space">Space</option>
+                  <option value="semicolon">Semicolon</option>
+                  <option value="tab">Tab</option>
+                  <option value="none">None</option>
+                </select>
               </div>
             </div>
           </div>

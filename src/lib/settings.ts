@@ -1,6 +1,6 @@
-export interface AppSettings { live: boolean; perLine: boolean }
+export interface AppSettings { live: boolean; delimiter: string }
 const KEY = 'ctftoolkit:v1:settings'
-const DEFAULT: AppSettings = { live: true, perLine: false }
+const DEFAULT: AppSettings = { live: true, delimiter: 'auto' }
 
 export function readSettings(): AppSettings {
   try {

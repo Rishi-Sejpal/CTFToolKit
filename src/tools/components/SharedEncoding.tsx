@@ -21,7 +21,7 @@ export function SharedEncoding({ mode, title, desc }: { mode: Mode; title: strin
     window.addEventListener('ctftoolkit:settings', h)
     return () => window.removeEventListener('ctftoolkit:settings', h)
   }, [])
-  useEffect(() => { if (settings.live) run() }, [input, settings.live, settings.perLine, key, shift, pattern, flags, other])
+  useEffect(() => { if (settings.live) run() }, [input, settings.live, settings.delimiter, key, shift, pattern, flags, other])
 
   const transformOne = async (v: string): Promise<string> => {
     let r = ''
@@ -65,10 +65,12 @@ export function SharedEncoding({ mode, title, desc }: { mode: Mode; title: strin
     }
   }
   const run = async () => {
-    if (settings.perLine) {
-      const lines = input.split('\n')
+    const key = settings.delimiter
+    const delim = key === 'auto' || key === 'newline' ? '\n' : key === 'comma' ? ',' : key === 'space' ? ' ' : key === 'semicolon' ? ';' : key === 'tab' ? '\t' : '\n'
+    if (key !== 'none') {
+      const lines = input.split(delim)
       const res = await Promise.all(lines.map((l) => transformOne(l)))
-      setOutput(res.join('\n'))
+      setOutput(res.join(delim))
     } else {
       setOutput(await transformOne(input))
     }
