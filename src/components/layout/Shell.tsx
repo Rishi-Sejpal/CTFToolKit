@@ -140,20 +140,23 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
         </div>
         <div className="content">{children}</div>
       </div>
-      <aside style={{ background: 'var(--panel)', borderLeft: '1px solid var(--border)', padding: 8, overflow: 'auto' }}>
-        <div className="muted" style={{ marginBottom: 4 }}>Favorites</div>
+      <aside style={{ background: 'var(--panel)', borderLeft: '1px solid var(--border)', padding: 12, overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ marginBottom: 4, color: '#f59e0b', fontWeight: 700, fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase' }}>Favorites</div>
         {favorites.length === 0 && <div className="muted">None</div>}
         {favorites.map((id) => {
           const t = tools.find((x) => x.id === id)
           if (!t) return null
           return <div key={id} className="item" onClick={() => onSelect(id)}>{t.name}</div>
         })}
-        <div className="muted" style={{ marginTop: 8, marginBottom: 4 }}>Recent</div>
-        {recent.map((id) => {
-          const t = tools.find((x) => x.id === id)
-          if (!t) return null
-          return <div key={id} className="item" onClick={() => onSelect(id)}>{t.name}</div>
-        })}
+        <div style={{ flex: 1, minHeight: 60 }} />
+        <div style={{ borderTop: '1px solid var(--border)', paddingTop: 12, marginTop: 12 }}>
+          <div style={{ marginBottom: 4, color: '#a3a3a3', fontWeight: 700, fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase' }}>Recent</div>
+          {recent.map((id) => {
+            const t = tools.find((x) => x.id === id)
+            if (!t) return null
+            return <div key={id} className="item" onClick={() => onSelect(id)}>{t.name}</div>
+          })}
+        </div>
       </aside>
       {paletteOpen && (
         <CommandPalette
