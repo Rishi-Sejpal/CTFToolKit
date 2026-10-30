@@ -23,7 +23,6 @@ export default function HomePage({ onEnter }: { onEnter?: () => void }) {
             <svg width="44" height="44" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="url(#lg)"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#ea580c"/></linearGradient></defs><text x="32" y="43" font-family="ui-sans-serif,system-ui" font-weight="900" font-size="28" text-anchor="middle" fill="#0a0a0a">CT</text></svg>
             <h1 style={{ fontSize: 44, margin: 0, fontWeight: 800, letterSpacing: '-.01em' }}>CTF<span style={{ color: '#f59e0b' }}>Tool</span>Kit</h1>
           </div>
-          <p style={{ color: '#a3a3a3', fontSize: 16, maxWidth: 560, margin: '0 auto 16px', lineHeight: 1.5 }}>Your browser-based CTF workstation. Encode, inspect, transform and explore — privately, locally, without a backend.</p>
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
             <button onClick={enter} style={{ padding: '10px 22px', borderRadius: 10, border: 'none', background: '#f59e0b', color: '#0a0a0a', fontWeight: 700, cursor: 'pointer' }}>Open Toolkit</button>
             <button onClick={openPalette} style={{ padding: '10px 22px', borderRadius: 10, border: '1px solid rgba(245,158,11,.35)', background: 'transparent', color: '#fbbf24', fontWeight: 600, cursor: 'pointer' }}>Search Tools (Ctrl+K)</button>
@@ -44,6 +43,7 @@ export default function HomePage({ onEnter }: { onEnter?: () => void }) {
         <style>{`@media (max-width: 768px) { .hp-grid { grid-template-columns: 1fr !important; } } @media (min-width: 769px) and (max-width: 1024px) { .hp-grid { grid-template-columns: repeat(2,1fr) !important; } }`}</style>
         <div style={{ marginTop: 24, padding: 16, borderRadius: 12, border: '1px solid rgba(245,158,11,.18)', background: '#111111' }}>
           <div style={{ fontWeight: 700, marginBottom: 8, color: '#fbbf24', fontSize: 14 }}>Offline-first & privacy</div>
+          <p style={{ color: '#a3a3a3', fontSize: 13, margin: '0 0 8px' }}>Your browser-based CTF workstation. Encode, inspect, transform and explore — privately, locally, without a backend.</p>
           <ul style={{ color: '#a3a3a3', fontSize: 13, lineHeight: 1.7, margin: 0, paddingLeft: 18 }}>
             <li>All encoding, crypto and file inspection run entirely client-side.</li>
             <li>No tool input or uploaded files leave your browser.</li>
