@@ -12,6 +12,13 @@ export default function CatalogTool() {
   })
   return (
     <ToolCard title="Native Tool Catalog" description="Kali Linux tools and package mappings">
+      <div className="card" style={{ background: 'var(--panel-2)', marginBottom: 8 }}>
+        <div className="muted" style={{ marginBottom: 4 }}>One-line installer (copy)</div>
+        <div className="row">
+          <code style={{ flex: 1, fontFamily: 'monospace', fontSize: 12, wordBreak: 'break-all' }}>curl -fsSL https://raw.githubusercontent.com/Rishi-Sejpal/CTFToolKit/main/install.sh | bash -s -- --profile full</code>
+          <button className="btn" onClick={() => navigator.clipboard.writeText('curl -fsSL https://raw.githubusercontent.com/Rishi-Sejpal/CTFToolKit/main/install.sh | bash -s -- --profile full')}>Copy</button>
+        </div>
+      </div>
       <div className="row">
         <input className="input" placeholder="Search catalog…" value={q} onChange={(e) => setQ(e.target.value)} />
         <select className="input" style={{ width: 140 }} value={os} onChange={(e) => setOs(e.target.value)}>
