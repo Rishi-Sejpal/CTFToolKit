@@ -106,16 +106,18 @@ export default function HexEditorTool() {
         {loading && <div className="muted">Loading…</div>}
         {error && <div style={{ color: '#f87171', fontSize: 13, marginBottom: 8 }}>{error}</div>}
 
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
-          <input className="input" style={{ width: 160 }} placeholder="Offset (0x.. or decimal)" value={offsetInput} onChange={(e) => setOffsetInput(e.target.value)} />
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 8, alignItems: 'center' }}>
+          <input className="input" style={{ width: 200, padding: '6px 10px' }} placeholder="Offset (0x.. or decimal)" value={offsetInput} onChange={(e) => setOffsetInput(e.target.value)} />
           <button className="btn" onClick={gotoOffset} disabled={!bytes}>Go</button>
-          <select className="input" style={{ width: 120 }} value={view} onChange={(e) => setView(e.target.value as any)}>
+          <button className="btn" onClick={copyHex} disabled={!bytes}>Copy Hex</button>
+          <button className="btn" onClick={exportDump} disabled={!bytes}>Export</button>
+        </div>
+        <div style={{ marginBottom: 12 }}>
+          <select className="input" style={{ width: 160 }} value={view} onChange={(e) => setView(e.target.value as any)}>
             <option value="both">Hex + ASCII</option>
             <option value="hex">Hex only</option>
             <option value="ascii">ASCII only</option>
           </select>
-          <button className="btn" onClick={copyHex} disabled={!bytes}>Copy Hex</button>
-          <button className="btn" onClick={exportDump} disabled={!bytes}>Export</button>
         </div>
 
         {bytes ? (
