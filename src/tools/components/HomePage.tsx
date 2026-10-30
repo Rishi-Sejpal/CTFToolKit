@@ -1,11 +1,11 @@
-export default function HomePage() {
+export default function HomePage({ onEnter }: { onEnter?: () => void }) {
   return (
     <div style={{ maxWidth: 960, margin: '0 auto', padding: 8 }}>
       <div className="card" style={{ textAlign: 'center', padding: 40, background: 'linear-gradient(135deg, rgba(78,161,255,.2), rgba(124,92,255,.2), rgba(45,212,191,.15))', border: 'none' }}>
         <h1 style={{ margin: 0, fontSize: 40, background: 'linear-gradient(90deg,#4ea1ff,#7c5cff,#2dd4bf)', WebkitBackgroundClip: 'text', color: 'transparent' }}>CTFToolKit</h1>
         <p style={{ fontSize: 18, color: 'var(--muted)', marginTop: 8 }}>Your offline-first CTF workstation</p>
         <p style={{ color: 'var(--muted)', maxWidth: 600, margin: '8px auto' }}>Encoding, cryptography, reverse shells, recipes, and native tool installation — all running locally in your browser.</p>
-        <button className="btn primary" style={{ marginTop: 16, padding: '10px 24px', fontSize: 15 }} onClick={() => window.dispatchEvent(new CustomEvent('ctftoolkit:nav', { detail: 'b64-enc' }))}>
+        <button className="btn primary" style={{ marginTop: 16, padding: '10px 24px', fontSize: 15 }} onClick={() => { if (onEnter) onEnter(); else window.dispatchEvent(new CustomEvent('ctftoolkit:nav', { detail: 'b64-enc' })) }}>
           Get Started
         </button>
       </div>
