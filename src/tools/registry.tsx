@@ -6,6 +6,8 @@ import ReverseShellTool from './components/ReverseShellTool'
 import RecipeWorkbench from './components/RecipeWorkbench'
 import CatalogTool from './components/CatalogTool'
 import CheatSheetsTool from './components/CheatSheetsTool'
+import HexEditorTool from './components/HexEditorTool'
+import HomePage from './components/HomePage'
 
 function W(props: { mode: any; title: string; desc: string }) {
   return <SharedEncoding mode={props.mode} title={props.title} desc={props.desc} />
@@ -17,6 +19,8 @@ const mk = (id: string, name: string, category: ToolCategory, description: strin
 })
 
 export const TOOLS: ToolDefinition[] = [
+  mk('home', 'Home', 'Utilities', 'Welcome', ['home', 'start'], HomePage),
+  mk('hexeditor', 'Hex Editor', 'Utilities', 'Hex editor', ['hex', 'editor', 'file'], HexEditorTool),
   mk('b64-enc', 'Base64 Encode', 'Encoding', 'Encode text to Base64', ['base64', 'encode'], () => <W mode="b64e" title="Base64 Encode" desc="Encode text to Base64" />),
   mk('b64-dec', 'Base64 Decode', 'Encoding', 'Decode Base64 to text', ['base64', 'decode'], () => <W mode="b64d" title="Base64 Decode" desc="Decode Base64" />),
   mk('b32-enc', 'Base32 Encode', 'Encoding', 'Encode text to Base32', ['base32'], () => <W mode="b32e" title="Base32 Encode" desc="Encode" />),

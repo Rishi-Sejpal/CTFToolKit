@@ -24,7 +24,7 @@
 html, body, #root { height: 100%; margin: 0; }
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(78,161,255,.12), transparent), radial-gradient(900px 500px at 100% 0%, rgba(124,92,255,.10), transparent), var(--bg);
   color: var(--text);
   font-size: 14px;
 }
@@ -37,7 +37,8 @@ a { color: var(--accent); }
 .main { display: flex; flex-direction: column; overflow: hidden; }
 .topbar { height: 44px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; padding: 0 12px; background: var(--panel); }
 .content { flex: 1; overflow: auto; padding: 12px; }
-.card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px; box-shadow: 0 4px 20px rgba(0,0,0,.15); }
+.card:hover { border-color: rgba(78,161,255,.35); }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .col { display: flex; flex-direction: column; gap: 8px; }
 .muted { color: var(--muted); font-size: 12px; }
@@ -53,7 +54,7 @@ textarea { min-height: 120px; resize: vertical; font-family: ui-monospace, SFMon
 .cmdpalette ul { list-style: none; margin: 0; padding: 0; overflow: auto; }
 .cmdpalette li { padding: 8px 12px; cursor: pointer; display: flex; justify-content: space-between; }
 .cmdpalette li.active { background: var(--panel-2); }
-.sidebar .cat { padding: 6px 12px; font-size: 11px; text-transform: uppercase; color: var(--muted); letter-spacing: .05em; }
+.sidebar .cat { padding: 6px 12px; font-size: 11px; text-transform: uppercase; color: var(--accent); letter-spacing: .08em; font-weight: 600; }
 .sidebar .item { padding: 6px 12px; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 8px; }
 .sidebar .item:hover { background: var(--panel-2); }
 .sidebar .item.active { background: var(--panel-2); border-left: 2px solid var(--accent); }
@@ -81,3 +82,6 @@ textarea { min-height: 120px; resize: vertical; font-family: ui-monospace, SFMon
   border-color: var(--accent);
   background: rgba(255,255,255,0.1);
 }
+
+.hex-editor textarea { border-color: #2dd4bf; }
+.hex-editor .card { border-color: #2dd4bf; }
