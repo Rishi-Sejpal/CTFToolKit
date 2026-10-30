@@ -27,7 +27,6 @@ export default function ReverseShellTool() {
         <input className="input" style={{ width: 200 }} value={ip} onChange={(e) => setIp(e.target.value)} />
         <label className="muted">Port</label>
         <input className="input" style={{ width: 100 }} type="number" value={port} onChange={(e) => setPort(Number(e.target.value))} />
-        <button className="btn" onClick={() => setPort((p) => p + 1)}>+1 port</button>
       </div>
       <div className="row">
         <select className="input" style={{ width: 160 }} value={cat} onChange={(e) => setCat(e.target.value)}>
