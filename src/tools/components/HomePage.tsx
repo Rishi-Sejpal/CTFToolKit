@@ -53,7 +53,7 @@ export default function HomePage({ onEnter }: { onEnter?: () => void }) {
           </ul>
         </div>
         <div style={{ marginTop: 16, display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
-          {['Ctrl+K', '/', 'Esc', 'Ctrl+Enter'].map((k) => (
+          {['/', 'Esc', 'Ctrl+Enter'].map((k) => (
             <kbd key={k} style={{ padding: '4px 10px', borderRadius: 6, border: '1px solid rgba(245,158,11,.25)', background: '#111111', color: '#fbbf24', fontSize: 12, fontFamily: 'monospace' }}>{k}</kbd>
           ))}
         </div>
