@@ -10,6 +10,7 @@ import FileSigTool from './components/FileSigTool'
 import ExifTool from './components/ExifTool'
 import ZeroWidthTool from './components/ZeroWidthTool'
 import LsbTool from './components/LsbTool'
+import WorkspaceTool from './components/WorkspaceTool'
 import CheatSheetsTool from './components/CheatSheetsTool'
 import HexEditorTool from './components/HexEditorTool'
 
@@ -64,4 +65,5 @@ export const TOOLS: ToolDefinition[] = [
   mk('exif', 'EXIF Viewer', 'Forensics', 'Inspect image metadata', ['exif', 'metadata', 'image'], ExifTool),
   mk('zerowidth', 'Zero-Width Detector', 'Steganography', 'Detect hidden unicode', ['stego', 'unicode', 'hidden'], ZeroWidthTool),
   mk('lsb', 'LSB Inspector', 'Steganography', 'Visualise LSB plane', ['stego', 'lsb', 'image'], LsbTool),
+  mk('workspace', 'Challenge Workspace', 'Utilities', 'Save notes and findings', ['workspace', 'challenge', 'notes'], WorkspaceTool),
 ]
