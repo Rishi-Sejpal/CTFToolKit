@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import type { ToolDefinition } from '../../lib/types'
 import { readJson, writeJson, STORAGE_KEYS } from '../../lib/storage'
@@ -17,6 +17,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [favorites, setFavorites] = useState<string[]>(() => readJson(STORAGE_KEYS.favorites, []))
   const [recent, setRecent] = useState<string[]>(() => readJson(STORAGE_KEYS.recent, []))
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({ Favorites: true, Recent: true })
 
   useEffect(() => writeJson(STORAGE_KEYS.favorites, favorites), [favorites])
   useEffect(() => writeJson(STORAGE_KEYS.recent, recent), [recent])
@@ -73,7 +74,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
   const activeTool = tools.find((t) => t.id === activeId)
 
   return (
-    <div className="app" style={{ gridTemplateColumns: collapsed ? "60px 1fr" : "260px 1fr" }}>
+    <div className="app" style={{ gridTemplateColumns: collapsed ? '60px 1fr' : '260px 1fr' }}>
       <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'open' : ''}`}>
         <div className="topbar" style={{ border: 'none' }}>
           <button className="btn" onClick={() => setCollapsed((c) => !c)} aria-label="Toggle sidebar">
@@ -95,8 +96,10 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
             <div style={{ overflow: 'auto', flex: 1 }}>
               {grouped.map(([cat, items]) => (
                 <div key={cat}>
-                  <div className="cat">{cat}</div>
-                  {items.map((t) => (
+                  <div className="cat" style={{ cursor: 'pointer' }} onClick={() => setOpenSections((o) => ({ ...o, [cat]: !(o[cat] ?? true) }))}>
+                    {(openSections[cat] ?? true) ? '▾' : '▸'} {cat}
+                  </div>
+                  {(openSections[cat] ?? true) && items.map((t) => (
                     <div
                       key={t.id}
                       className={`item ${activeId === t.id ? 'active' : ''}`}
@@ -123,27 +126,39 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
               ))}
             </div>
             <div style={{ borderTop: '1px solid var(--border)', padding: 8 }}>
-              <div className="muted" style={{ marginBottom: 4 }}>Favorites</div>
-              {favorites.length === 0 && <div className="muted">None</div>}
-              {favorites.map((id) => {
-                const t = tools.find((x) => x.id === id)
-                if (!t) return null
-                return (
-                  <div key={id} className="item" onClick={() => onSelect(id)}>
-                    {t.name}
-                  </div>
-                )
-              })}
-              <div className="muted" style={{ marginTop: 8, marginBottom: 4 }}>Recent</div>
-              {recent.map((id) => {
-                const t = tools.find((x) => x.id === id)
-                if (!t) return null
-                return (
-                  <div key={id} className="item" onClick={() => onSelect(id)}>
-                    {t.name}
-                  </div>
-                )
-              })}
+              <div className="muted" style={{ marginBottom: 4, cursor: 'pointer' }} onClick={() => setOpenSections((o) => ({ ...o, Favorites: !(o.Favorites ?? true) }))}>
+                {(openSections.Favorites ?? true) ? '▾' : '▸'} Favorites
+              </div>
+              {(openSections.Favorites ?? true) && (
+                <>
+                  {favorites.length === 0 && <div className="muted">None</div>}
+                  {favorites.map((id) => {
+                    const t = tools.find((x) => x.id === id)
+                    if (!t) return null
+                    return (
+                      <div key={id} className="item" onClick={() => onSelect(id)}>
+                        {t.name}
+                      </div>
+                    )
+                  })}
+                </>
+              )}
+              <div className="muted" style={{ marginTop: 8, marginBottom: 4, cursor: 'pointer' }} onClick={() => setOpenSections((o) => ({ ...o, Recent: !(o.Recent ?? true) }))}>
+                {(openSections.Recent ?? true) ? '▾' : '▸'} Recent
+              </div>
+              {(openSections.Recent ?? true) && (
+                <>
+                  {recent.map((id) => {
+                    const t = tools.find((x) => x.id === id)
+                    if (!t) return null
+                    return (
+                      <div key={id} className="item" onClick={() => onSelect(id)}>
+                        {t.name}
+                      </div>
+                    )
+                  })}
+                </>
+              )}
             </div>
           </>
         )}
