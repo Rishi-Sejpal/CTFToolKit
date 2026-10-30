@@ -11,6 +11,8 @@ import ExifTool from './components/ExifTool'
 import ZeroWidthTool from './components/ZeroWidthTool'
 import LsbTool from './components/LsbTool'
 import WorkspaceTool from './components/WorkspaceTool'
+import { Base58Tool, Base85Tool, MorseTool, VigenereTool, AesTool, EntropyTool, SubnetTool } from './components/ExtraTools'
+import UrlParserTool from './components/UrlParserTool'
 import CheatSheetsTool from './components/CheatSheetsTool'
 import HexEditorTool from './components/HexEditorTool'
 
@@ -66,4 +68,12 @@ export const TOOLS: ToolDefinition[] = [
   mk('zerowidth', 'Zero-Width Detector', 'Steganography', 'Detect hidden unicode', ['stego', 'unicode', 'hidden'], ZeroWidthTool),
   mk('lsb', 'LSB Inspector', 'Steganography', 'Visualise LSB plane', ['stego', 'lsb', 'image'], LsbTool),
   mk('workspace', 'Challenge Workspace', 'Utilities', 'Save notes and findings', ['workspace', 'challenge', 'notes'], WorkspaceTool),
+  mk('base58', 'Base58', 'Encoding', 'Base58 encode/decode', ['base58'], Base58Tool),
+  mk('base85', 'Base85', 'Encoding', 'Base85 encode/decode', ['base85','ascii85'], Base85Tool),
+  mk('morse', 'Morse Code', 'Encoding', 'Morse encode/decode', ['morse'], MorseTool),
+  mk('vigenere', 'Vigenère Cipher', 'Cryptography', 'Vigenère cipher', ['vigenere'], VigenereTool),
+  mk('aes', 'AES Encrypt/Decrypt', 'Cryptography', 'AES-GCM', ['aes','crypto'], AesTool),
+  mk('entropy', 'Entropy Analysis', 'Forensics', 'Shannon/byte entropy', ['entropy'], EntropyTool),
+  mk('subnet', 'IP Subnet Calculator', 'Web', 'IPv4 CIDR info', ['ip','subnet','cidr'], SubnetTool),
+  mk('urlparser', 'URL Parser', 'Web', 'Parse URL components', ['url','parse'], UrlParserTool),
 ]

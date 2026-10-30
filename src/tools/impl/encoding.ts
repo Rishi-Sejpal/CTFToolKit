@@ -116,3 +116,68 @@ export function dateToTimestamp(s: string): string {
   if (isNaN(d.getTime())) throw new Error('Invalid date')
   return Math.floor(d.getTime() / 1000).toString()
 }
+
+export function b58Encode(s: string): string {
+  const alpha = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+  let num = BigInt(0)
+  for (const b of new TextEncoder().encode(s)) num = num * 256n + BigInt(b)
+  let out = ''
+  while (num > 0n) { out = alpha[Number(num % 58n)] + out; num /= 58n }
+  for (const b of new TextEncoder().encode(s)) { if (b === 0) out = '1' + out; else break }
+  return out || '1'
+}
+export function b58Decode(s: string): string {
+  const alpha = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+  let num = BigInt(0)
+  for (const c of s) { const idx = alpha.indexOf(c); if (idx < 0) throw new Error('Invalid base58'); num = num * 58n + BigInt(idx) }
+  const bytes: number[] = []
+  while (num > 0n) { bytes.unshift(Number(num % 256n)); num /= 256n }
+  let leading = 0
+  for (const c of s) { if (c === '1') leading++; else break }
+  const res = new Uint8Array(leading + bytes.length)
+  for (let i = 0; i < bytes.length; i++) res[leading + i] = bytes[i]
+  return new TextDecoder().decode(res)
+}
+export function b85Encode(s: string): string {
+  const bytes = new TextEncoder().encode(s)
+  let out = ''
+  for (let i = 0; i < bytes.length; i += 4) {
+    const chunk = bytes.slice(i, i + 4)
+    let n = 0
+    for (let j = 0; j < 4; j++) n = n * 256 + (chunk[j] || 0)
+    const chars = []
+    for (let j = 0; j < 5; j++) { chars.unshift(String.fromCharCode((n % 85) + 33)); n = Math.floor(n / 85) }
+    out += chars.join('')
+  }
+  return out
+}
+export function b85Decode(s: string): string {
+  const clean = s.trim()
+  const out: number[] = []
+  for (let i = 0; i < clean.length; i += 5) {
+    const chunk = clean.slice(i, i + 5)
+    let n = 0
+    for (const c of chunk) n = n * 85 + (c.charCodeAt(0) - 33)
+    for (let j = 3; j >= 0; j--) { out.push((n >> (j * 8)) & 0xff) }
+  }
+  return new TextDecoder().decode(new Uint8Array(out))
+}
+export function morseEncode(s: string): string {
+  const map: Record<string, string> = { a:'.-',b:'-...',c:'-.-.',d:'-..',e:'.',f:'..-.',g:'--.',h:'....',i:'..',j:'.---',k:'-.-',l:'.-..',m:'--',n:'-.',o:'---',p:'.--.',q:'--.-',r:'.-.',s:'...',t:'-',u:'..-',v:'...-',w:'.--',x:'-..-',y:'-.--',z:'--..', '0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.', ' ':'/' }
+  return s.toLowerCase().split('').map((c) => map[c] ?? c).join(' ')
+}
+export function morseDecode(s: string): string {
+  const rev: Record<string,string> = { '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f','--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l','--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r','...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x','-.--':'y','--..':'z' }
+  return s.split(' / ').map((w) => w.split(' ').map((c) => rev[c] ?? c).join('')).join(' ')
+}
+export function vigenere(s: string, key: string, dec=false): string {
+  key = key.toLowerCase()
+  let ki = 0
+  return s.replace(/[a-zA-Z]/g, (c) => {
+    const base = c <= 'Z' ? 65 : 97
+    const k = key[ki % key.length].charCodeAt(0) - 97
+    ki++
+    const shift = dec ? -k : k
+    return String.fromCharCode(((c.charCodeAt(0)-base+shift+26)%26)+base)
+  })
+}
