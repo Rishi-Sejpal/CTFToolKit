@@ -41,7 +41,7 @@ export default function HomePage({ onEnter }: { onEnter?: () => void }) {
           ))}
         </div>
         <style>{`@media (max-width: 768px) { .hp-grid { grid-template-columns: 1fr !important; } } @media (min-width: 769px) and (max-width: 1024px) { .hp-grid { grid-template-columns: repeat(2,1fr) !important; } }`}</style>
-        <div style={{ marginTop: 24, padding: 16, borderRadius: 12, border: '1px solid rgba(245,158,11,.18)', background: '#111111' }}>
+        <div style={{ marginTop: 24, padding: 20, borderRadius: 14, border: '1px solid rgba(245,158,11,.25)', background: 'linear-gradient(135deg, rgba(245,158,11,.06), #111111)', boxShadow: '0 4px 20px rgba(0,0,0,.3)' }}>
           <div style={{ fontWeight: 700, marginBottom: 8, color: '#fbbf24', fontSize: 14 }}>Offline-first & privacy</div>
           <p style={{ color: '#a3a3a3', fontSize: 13, margin: '0 0 8px' }}>Your browser-based CTF workstation. Encode, inspect, transform and explore — privately, locally, without a backend.</p>
           <ul style={{ color: '#a3a3a3', fontSize: 13, lineHeight: 1.7, margin: 0, paddingLeft: 18 }}>
@@ -57,9 +57,11 @@ export default function HomePage({ onEnter }: { onEnter?: () => void }) {
             <kbd key={k} style={{ padding: '4px 10px', borderRadius: 6, border: '1px solid rgba(245,158,11,.25)', background: '#111111', color: '#fbbf24', fontSize: 12, fontFamily: 'monospace' }}>{k}</kbd>
           ))}
         </div>
-        <div style={{ marginTop: 24, textAlign: 'center' }}><img src="/images/ctftoolkit-brand-art.svg" alt="CTFToolKit" loading="lazy" style={{ width: 120, opacity: .7, marginBottom: 8 }} /></div>
-        <div style={{ textAlign: 'center', color: '#525252', fontSize: 12 }}>
-          MIT License · CTFToolKit · Documentation, installation and credits in repository
+        <div style={{ marginTop: 24, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 12 }}>
+          <a href="https://github.com/Rishi-Sejpal/CTFToolKit" target="_blank" rel="noreferrer" style={{ color: '#a3a3a3' }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2.00-3.20.70-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.70.08-.70 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.69 1.25 3.35.96.10-.75.40-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.10-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.0 11.0 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.10 0 4.42-2.70 5.39-5.27 5.68.42.36.79 1.08.79 2.18 0 1.58-.01 2.85-.01 3.24 0 .31.21.68.80.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+          </a>
+          <span style={{ color: '#737373', fontSize: 12 }}>by Rishi Sejpal</span>
         </div>
       </div>
     </div>
