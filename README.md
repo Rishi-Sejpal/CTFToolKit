@@ -27,6 +27,13 @@ bash install.sh --dry-run --profile full
 bash install.sh --profile full
 ```
 
+## Uninstall
+
+```bash
+bash uninstall.sh --dry-run
+bash uninstall.sh --yes
+```
+
 ## Offline
 
 First visit downloads assets; afterwards works offline via service worker.
