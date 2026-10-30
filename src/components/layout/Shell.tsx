@@ -8,10 +8,9 @@ interface Props {
   activeId: string | null
   onSelect: (id: string) => void
   children: React.ReactNode
-  offlineReady: boolean
 }
 
-export function Shell({ tools, activeId, onSelect, children, offlineReady }: Props) {
+export function Shell({ tools, activeId, onSelect, children }: Props) {
   const [collapsed, setCollapsed] = useState(false)
   const [search, setSearch] = useState('')
   const [paletteOpen, setPaletteOpen] = useState(false)
@@ -155,9 +154,6 @@ export function Shell({ tools, activeId, onSelect, children, offlineReady }: Pro
             ☰
           </button>
           <div style={{ flex: 1, fontWeight: 600 }}>{activeTool?.name ?? 'CTFToolKit'}</div>
-          <span className={`offline-badge ${offlineReady ? 'ready' : 'not'}`}>
-            {offlineReady ? 'Offline ready' : 'Online'}
-          </span>
           <button className="btn" onClick={() => setPaletteOpen(true)}>
             ⌘K
           </button>
