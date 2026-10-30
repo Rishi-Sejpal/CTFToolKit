@@ -19,6 +19,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
   const [favorites, setFavorites] = useState<string[]>(() => readJson(STORAGE_KEYS.favorites, []))
   const [recent, setRecent] = useState<string[]>(() => readJson(STORAGE_KEYS.recent, []))
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({ Favorites: true, Recent: true })
+  const [prevTool, setPrevTool] = useState<string | null>(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [settings, setSettings] = useState(readSettings)
 
@@ -47,8 +48,9 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim()
-    if (!q) return tools
-    return tools.filter((t) =>
+    const base = tools.filter((t) => t.id !== 'cheatsheets')
+    if (!q) return base
+    return base.filter((t) =>
       (t.name + ' ' + t.description + ' ' + t.keywords.join(' ') + ' ' + t.category).toLowerCase().includes(q),
     )
   }, [tools, search])
@@ -137,7 +139,10 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
             ☰
           </button>
           <div style={{ flex: 1, fontWeight: 600 }}>{activeTool?.name ?? 'CTFToolKit'}</div>
-          <button className="btn" onClick={() => window.dispatchEvent(new CustomEvent('ctftoolkit:nav', { detail: 'cheatsheets' }))}>Sheets</button>
+          <button className="btn" onClick={() => {
+            if (activeId === 'cheatsheets') { onSelect(prevTool || (tools.find(t=>t.id!=='cheatsheets')?.id ?? tools[0].id)) }
+            else { setPrevTool(activeId); onSelect('cheatsheets') }
+          }}>{activeId === 'cheatsheets' ? 'Close CheatSheets' : 'CheatSheets'}</button>
           <button className="btn" onClick={() => setSettingsOpen(true)} aria-label="Settings">⚙</button>
           <button className="btn" onClick={() => setPaletteOpen(true)}>
             ⌘K
