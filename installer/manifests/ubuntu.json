@@ -1,0 +1,1 @@
+{"distro":"ubuntu","packages":{"essentials":["build-essential","git","curl","wget","python3","python3-pip","nmap","tcpdump"],"full":["build-essential","git","curl","wget","python3","python3-pip","nmap","tcpdump","wireshark","john","hashcat","ffuf","gobuster","sqlmap","binwalk","ghidra"]}}

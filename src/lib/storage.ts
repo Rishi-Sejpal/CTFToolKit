@@ -1,0 +1,27 @@
+const KEY = 'ctftoolkit:v1'
+
+export function readJson<T>(key: string, fallback: T): T {
+  try {
+    const raw = localStorage.getItem(key)
+    if (!raw) return fallback
+    return JSON.parse(raw) as T
+  } catch {
+    return fallback
+  }
+}
+
+export function writeJson(key: string, value: unknown): void {
+  try {
+    localStorage.setItem(key, JSON.stringify(value))
+  } catch {
+    // ignore
+  }
+}
+
+export const STORAGE_KEYS = {
+  favorites: `${KEY}:favorites`,
+  recent: `${KEY}:recent`,
+  settings: `${KEY}:settings`,
+  recipes: `${KEY}:recipes`,
+  rsgConfig: `${KEY}:rsg`,
+}

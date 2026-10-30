@@ -1,0 +1,1 @@
+{"distro":"kali","packages":{"essentials":["git","curl","wget","python3","nmap","tcpdump"],"full":["kali-linux-everything"]}}

@@ -1,0 +1,1 @@
+{"distro":"arch","packages":{"essentials":["base-devel","git","curl","wget","python","python-pip","nmap","tcpdump"],"full":["base-devel","git","curl","wget","python","python-pip","nmap","tcpdump","wireshark-qt","john","hashcat","ffuf","gobuster","sqlmap","binwalk","ghidra"]}}
