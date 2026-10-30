@@ -5,6 +5,11 @@ import { HashTool, HmacTool, HashIdTool, FileHashTool, JwtTool } from './compone
 import ReverseShellTool from './components/ReverseShellTool'
 import RecipeWorkbench from './components/RecipeWorkbench'
 import CatalogTool from './components/CatalogTool'
+import StringsTool from './components/StringsTool'
+import FileSigTool from './components/FileSigTool'
+import ExifTool from './components/ExifTool'
+import ZeroWidthTool from './components/ZeroWidthTool'
+import LsbTool from './components/LsbTool'
 import CheatSheetsTool from './components/CheatSheetsTool'
 import HexEditorTool from './components/HexEditorTool'
 
@@ -54,4 +59,9 @@ export const TOOLS: ToolDefinition[] = [
   mk('recipe', 'Recipe Workbench', 'Recipe', 'Chain transformations', ['recipe', 'workbench', 'chain'], RecipeWorkbench),
   mk('catalog', 'Native Tool Catalog', 'Utilities', 'Browse native tools', ['catalog', 'tools', 'kali'], CatalogTool),
   mk('cheatsheets', 'Cheat Sheets', 'Cheat Sheets', 'Quick references', ['cheat', 'reference', 'curl', 'nmap'], CheatSheetsTool),
+  mk('strings', 'Strings Extractor', 'Forensics', 'Extract printable strings', ['strings', 'binary'], StringsTool),
+  mk('filesig', 'File Signature', 'Forensics', 'Identify file by magic bytes', ['file', 'magic', 'signature'], FileSigTool),
+  mk('exif', 'EXIF Viewer', 'Forensics', 'Inspect image metadata', ['exif', 'metadata', 'image'], ExifTool),
+  mk('zerowidth', 'Zero-Width Detector', 'Steganography', 'Detect hidden unicode', ['stego', 'unicode', 'hidden'], ZeroWidthTool),
+  mk('lsb', 'LSB Inspector', 'Steganography', 'Visualise LSB plane', ['stego', 'lsb', 'image'], LsbTool),
 ]
