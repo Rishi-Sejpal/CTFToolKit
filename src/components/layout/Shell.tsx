@@ -118,7 +118,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
                         }}
                         aria-label="Favorite"
                       >
-                        {favorites.includes(t.id) ? '★' : '☆'}
+                        <span style={{ color: '#f59e0b' }}>{favorites.includes(t.id) ? '★' : '☆'}</span>
                       </button>
                     </div>
                   ))}
