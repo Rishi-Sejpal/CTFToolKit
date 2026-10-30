@@ -13,6 +13,9 @@ import LsbTool from './components/LsbTool'
 import WorkspaceTool from './components/WorkspaceTool'
 import HashCrackTool from './components/HashCrackTool'
 import TextUtilsTool from './components/TextUtilsTool'
+import RainbowTableTool from './components/RainbowTableTool'
+import ApiTesterTool from './components/ApiTesterTool'
+import BsonTool from './components/BsonTool'
 import { Base58Tool, Base85Tool, MorseTool, VigenereTool, AesTool, EntropyTool, SubnetTool } from './components/ExtraTools'
 import UrlParserTool from './components/UrlParserTool'
 import CheatSheetsTool from './components/CheatSheetsTool'
@@ -77,6 +80,9 @@ export const TOOLS: ToolDefinition[] = [
   mk('workspace', 'Challenge Workspace', 'Utilities', 'Save notes and findings', ['workspace', 'challenge', 'notes'], WorkspaceTool),
   mk('hashcrack', 'Hash Crack Station', 'Cryptography', 'Dictionary hash cracking', ['hash', 'crack', 'password'], HashCrackTool),
   mk('textutils', 'Text Utils', 'Text', 'Text stats and transforms', ['text', 'utils', 'count'], TextUtilsTool),
+  mk('rainbow', 'Rainbow Table Search', 'Cryptography', 'Build and search rainbow table', ['rainbow', 'hash'], RainbowTableTool),
+  mk('apitester', 'API Tester', 'Web', 'HTTP client', ['api', 'http', 'postman'], ApiTesterTool),
+  mk('bson', 'BSON Encode/Decode', 'Encoding', 'BSON serialization', ['bson'], BsonTool),
   mk('base58', 'Base58', 'Encoding', 'Base58 encode/decode', ['base58'], Base58Tool),
   mk('base85', 'Base85', 'Encoding', 'Base85 encode/decode', ['base85','ascii85'], Base85Tool),
   mk('morse', 'Morse Code', 'Encoding', 'Morse encode/decode', ['morse'], MorseTool),
