@@ -13,6 +13,7 @@ import LsbTool from './components/LsbTool'
 import WorkspaceTool from './components/WorkspaceTool'
 import HashCrackTool from './components/HashCrackTool'
 import TextUtilsTool from './components/TextUtilsTool'
+import NumBaseTool from './components/NumBaseTool'
 import RainbowTableTool from './components/RainbowTableTool'
 import ApiTesterTool from './components/ApiTesterTool'
 import BsonTool from './components/BsonTool'
@@ -80,6 +81,7 @@ export const TOOLS: ToolDefinition[] = [
   mk('workspace', 'Challenge Workspace', 'Utilities', 'Save notes and findings', ['workspace', 'challenge', 'notes'], WorkspaceTool),
   mk('hashcrack', 'Hash Crack Station', 'Cryptography', 'Dictionary hash cracking', ['hash', 'crack', 'password'], HashCrackTool),
   mk('textutils', 'Text Utils', 'Text', 'Text stats and transforms', ['text', 'utils', 'count'], TextUtilsTool),
+  mk('numbase', 'Number Base Converter', 'Encoding', 'Binary/octal/decimal/hex/ascii', ['base', 'convert', 'number'], NumBaseTool),
   mk('rainbow', 'Rainbow Table Search', 'Cryptography', 'Build and search rainbow table', ['rainbow', 'hash'], RainbowTableTool),
   mk('apitester', 'API Tester', 'Web', 'HTTP client', ['api', 'http', 'postman'], ApiTesterTool),
   mk('bson', 'BSON Encode/Decode', 'Encoding', 'BSON serialization', ['bson'], BsonTool),
