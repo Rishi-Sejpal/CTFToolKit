@@ -74,7 +74,7 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
   const activeTool = tools.find((t) => t.id === activeId)
 
   return (
-    <div className="app" style={{ gridTemplateColumns: collapsed ? '60px 1fr' : '260px 1fr' }}>
+    <div className="app" style={{ gridTemplateColumns: collapsed ? '60px 1fr 220px' : '260px 1fr 220px' }}>
       <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'open' : ''}`}>
         <div className="topbar" style={{ border: 'none' }}>
           <button className="btn" onClick={() => setCollapsed((c) => !c)} aria-label="Toggle sidebar">
@@ -125,41 +125,6 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
                 </div>
               ))}
             </div>
-            <div style={{ borderTop: '1px solid var(--border)', padding: 8 }}>
-              <div className="muted" style={{ marginBottom: 4, cursor: 'pointer' }} onClick={() => setOpenSections((o) => ({ ...o, Favorites: !(o.Favorites ?? true) }))}>
-                {(openSections.Favorites ?? true) ? '▾' : '▸'} Favorites
-              </div>
-              {(openSections.Favorites ?? true) && (
-                <>
-                  {favorites.length === 0 && <div className="muted">None</div>}
-                  {favorites.map((id) => {
-                    const t = tools.find((x) => x.id === id)
-                    if (!t) return null
-                    return (
-                      <div key={id} className="item" onClick={() => onSelect(id)}>
-                        {t.name}
-                      </div>
-                    )
-                  })}
-                </>
-              )}
-              <div className="muted" style={{ marginTop: 8, marginBottom: 4, cursor: 'pointer' }} onClick={() => setOpenSections((o) => ({ ...o, Recent: !(o.Recent ?? true) }))}>
-                {(openSections.Recent ?? true) ? '▾' : '▸'} Recent
-              </div>
-              {(openSections.Recent ?? true) && (
-                <>
-                  {recent.map((id) => {
-                    const t = tools.find((x) => x.id === id)
-                    if (!t) return null
-                    return (
-                      <div key={id} className="item" onClick={() => onSelect(id)}>
-                        {t.name}
-                      </div>
-                    )
-                  })}
-                </>
-              )}
-            </div>
           </>
         )}
       </aside>
@@ -175,6 +140,21 @@ export function Shell({ tools, activeId, onSelect, children }: Props) {
         </div>
         <div className="content">{children}</div>
       </div>
+      <aside style={{ background: 'var(--panel)', borderLeft: '1px solid var(--border)', padding: 8, overflow: 'auto' }}>
+        <div className="muted" style={{ marginBottom: 4 }}>Favorites</div>
+        {favorites.length === 0 && <div className="muted">None</div>}
+        {favorites.map((id) => {
+          const t = tools.find((x) => x.id === id)
+          if (!t) return null
+          return <div key={id} className="item" onClick={() => onSelect(id)}>{t.name}</div>
+        })}
+        <div className="muted" style={{ marginTop: 8, marginBottom: 4 }}>Recent</div>
+        {recent.map((id) => {
+          const t = tools.find((x) => x.id === id)
+          if (!t) return null
+          return <div key={id} className="item" onClick={() => onSelect(id)}>{t.name}</div>
+        })}
+      </aside>
       {paletteOpen && (
         <CommandPalette
           tools={tools}
